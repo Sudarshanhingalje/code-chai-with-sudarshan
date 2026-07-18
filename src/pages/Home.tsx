@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
       <section className="px-4 sm:px-6 max-w-4xl mx-auto">
         <div className="flex justify-center items-center py-6 sm:py-8">
           <img
-            src="/code-chai-with-sudarshan/images/logo-light.png"
+            src="/code-chai-with-sudarshan/images/logo-middle.png"
             alt="Code & Chai with Sudarshan"
             className="w-full max-w-[320px] sm:max-w-[480px] md:max-w-[600px] h-auto object-contain select-none"
           />
