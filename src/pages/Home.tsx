@@ -4,6 +4,8 @@ import { BookOpen, Coffee, ArrowRight } from 'lucide-react';
 import { BlogCard } from '../components/BlogCard';
 import { getAllPosts } from '../utils/posts';
 
+import { AnimatedLogo } from '../components/AnimatedLogo';
+
 export const Home: React.FC = () => {
   const allPosts = getAllPosts();
   const featuredPosts = allPosts.filter((p) => p.frontmatter.featured).slice(0, 3);
@@ -15,11 +17,7 @@ export const Home: React.FC = () => {
       {/* Compact Hero — minimal, chai-warm */}
       <section className="text-center py-10 px-4 max-w-2xl mx-auto space-y-6">
         <div className="flex justify-center select-none">
-          <img
-            src="/code-chai-with-sudarshan/images/logo.png"
-            alt="Code & Chai with Sudarshan"
-            className="h-24 sm:h-28 w-auto object-contain bg-cream/95 dark:bg-parchment/95 px-4 py-2.5 rounded-2xl shadow border border-mist/10"
-          />
+          <AnimatedLogo height={110} />
         </div>
 
         <p className="text-sm sm:text-base text-ink/70 dark:text-parchment/70 font-sans max-w-lg mx-auto leading-relaxed">
