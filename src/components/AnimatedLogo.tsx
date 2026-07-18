@@ -9,110 +9,115 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = '', heig
   return (
     <div className={`inline-block ${className}`} style={{ height }}>
       <svg
-        viewBox="170 320 1360 425"
+        viewBox="170 240 1340 520"
         className="w-auto h-full overflow-visible select-none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <style>{`
           svg {
-            --logo-green: #8ecb2e;
-            --logo-green-glow: #a6e639;
-            --logo-white: #1C2530;
-            --logo-glow-white-color: rgba(28, 37, 48, 0.3);
+            --green-dark: #3f6b28;
+            --green: #4f8a34;
+            --green-light: #7fb84a;
+            --black: #1C2530;
+            --gray: #6e6e6e;
+            --tea-dark: #a9631c;
+            --tea: #d98f2e;
+            --tea-light: #f0b45a;
+            --saucer-bg: #ffffff;
           }
           
-          /* Dark mode variables override based on html class */
+          /* Dark mode overrides */
           :global(.dark) svg,
           .dark svg,
           [class*="dark"] svg {
-            --logo-white: #f5f5f5;
-            --logo-glow-white-color: rgba(255, 255, 255, 0.5);
+            --black: #f5f5f5;
+            --gray: #8B95A1;
+            --saucer-bg: #12181F;
           }
 
-          .glow-green {
-            filter: drop-shadow(0 0 2px var(--logo-green)) drop-shadow(0 0 6px var(--logo-green-glow));
-          }
-          .glow-white {
-            filter: drop-shadow(0 0 2px var(--logo-white)) drop-shadow(0 0 5px var(--logo-glow-white-color));
-          }
-
-          /* saucer pulse */
-          .saucer {
-            animation: pulseGlow 3s ease-in-out infinite;
-            transform-origin: 360px 705px;
-          }
-          @keyframes pulseGlow {
-            0%, 100% { 
-              opacity: 0.75; 
-              filter: drop-shadow(0 0 3px var(--logo-green)) drop-shadow(0 0 8px var(--logo-green-glow)); 
-            }
-            50% { 
-              opacity: 1; 
-              filter: drop-shadow(0 0 6px var(--logo-green)) drop-shadow(0 0 16px var(--logo-green-glow)); 
-            }
-          }
-
-          /* glass container gentle float */
+          /* glass + saucer gentle float */
           .glass-group {
             animation: floaty 4s ease-in-out infinite;
-            transform-origin: 360px 690px;
+            transform-origin: 360px 692px;
           }
           @keyframes floaty {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-5px); }
           }
 
-          /* steam */
+          .saucer {
+            animation: saucerPulse 4s ease-in-out infinite;
+            transform-origin: 360px 705px;
+          }
+          @keyframes saucerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+          }
+
+          /* leaves sway */
+          .leaves {
+            animation: sway 3.4s ease-in-out infinite;
+            transform-origin: 266px 425px;
+          }
+          @keyframes sway {
+            0%, 100% { transform: rotate(-4deg); }
+            50% { transform: rotate(4deg); }
+          }
+
+          /* steam swirl loop */
           .steam path {
             stroke-dasharray: 260;
             stroke-dashoffset: 260;
-            animation: rise 3.2s ease-in-out infinite;
             opacity: 0;
+            animation: rise 3.4s ease-in-out infinite;
           }
-          .steam path:nth-child(1) { animation-delay: 0s; }
-          .steam path:nth-child(2) { animation-delay: 0.5s; }
+          .steam path.a { animation-delay: 0s; }
+          .steam path.b { animation-delay: 0.6s; }
           @keyframes rise {
-            0% { stroke-dashoffset: 260; opacity: 0; transform: translateY(10px); }
+            0% { stroke-dashoffset: 260; opacity: 0; transform: translateY(8px); }
             15% { opacity: 1; }
-            55% { stroke-dashoffset: 0; opacity: 0.9; transform: translateY(-4px); }
-            80% { opacity: 0.4; }
+            55% { stroke-dashoffset: 0; opacity: 1; transform: translateY(-4px); }
+            82% { opacity: 0.4; }
             100% { stroke-dashoffset: 0; opacity: 0; transform: translateY(-14px); }
           }
 
-          /* leaf sway */
-          .leaves {
-            animation: sway 3.2s ease-in-out infinite;
-            transform-origin: 270px 440px;
+          /* the little steam dot */
+          .steam-dot {
+            animation: dotPulse 3.4s ease-in-out infinite;
+            transform-origin: 425px 360px;
           }
-          @keyframes sway {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-          }
-
-          /* code brackets flicker like a cursor / neon sign */
-          .bracket {
-            animation: flicker 3.6s ease-in-out infinite;
-          }
-          .bracket.right { animation-delay: 1.8s; }
-          @keyframes flicker {
-            0%, 92%, 100% { 
-              opacity: 1; 
-              filter: drop-shadow(0 0 3px var(--logo-green)) drop-shadow(0 0 10px var(--logo-green-glow)); 
-            }
-            93% { opacity: 0.3; }
-            95% { opacity: 1; }
-            96% { opacity: 0.4; }
-            97% { opacity: 1; }
+          @keyframes dotPulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.85); }
+            50% { opacity: 1; transform: scale(1.1); }
           }
 
-          /* text reveal animation */
+          /* brackets idle bounce */
+          .bracket-left {
+            animation: bounceL 3s ease-in-out infinite;
+            transform-origin: 0px 600px;
+          }
+          @keyframes bounceL {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-6px); }
+          }
+          
+          .bracket-right {
+            animation: bounceR 3s ease-in-out infinite;
+            transform-origin: 810px 600px;
+          }
+          @keyframes bounceR {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(6px); }
+          }
+
+          /* text entrance */
           .title-word {
             opacity: 0;
-            animation: revealUp 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+            animation: revealUp 0.8s cubic-bezier(.2,.8,.2,1) forwards;
           }
-          .title-word.w1 { animation-delay: 0.2s; }
-          .title-word.w2 { animation-delay: 0.5s; }
-          .title-word.w3 { animation-delay: 0.85s; }
+          .title-word.w1 { animation-delay: 0.15s; }
+          .title-word.w2 { animation-delay: 0.4s; }
+          .title-word.w3 { animation-delay: 0.65s; }
           @keyframes revealUp {
             0% { opacity: 0; transform: translateY(14px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -120,37 +125,25 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = '', heig
 
           .subtitle {
             opacity: 0;
-            animation: fadeIn 1s ease forwards;
-            animation-delay: 1.2s;
-          }
-          .subline {
-            transform-origin: center;
-            animation: growLine 1s ease forwards;
-            animation-delay: 1.2s;
-            transform: scaleX(0);
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 1s;
           }
           @keyframes fadeIn {
             to { opacity: 1; }
+          }
+
+          .subline {
+            transform-origin: center;
+            animation: growLine 0.8s ease forwards;
+            animation-delay: 1s;
+            transform: scaleX(0);
           }
           @keyframes growLine {
             to { transform: scaleX(1); }
           }
 
-          .amp {
-            animation: pulseGlow 3s ease-in-out infinite;
-            animation-delay: 0.4s;
-          }
-
-          /* text steady glow */
-          .glow-title-white {
-            filter: drop-shadow(0 0 1px var(--logo-white)) drop-shadow(0 0 5px var(--logo-glow-white-color));
-          }
-          .glow-title-green {
-            filter: drop-shadow(0 0 2px var(--logo-green)) drop-shadow(0 0 8px var(--logo-green-glow));
-          }
-
           @media (prefers-reduced-motion: reduce) {
-            .saucer, .glass-group, .steam path, .leaves, .bracket, .amp {
+            .glass-group, .saucer, .leaves, .steam path, .steam-dot, .bracket-left, .bracket-right, .subline {
               animation: none !important;
             }
             .steam path {
@@ -171,65 +164,65 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = '', heig
         <g className="glass-group">
           {/* saucer */}
           <g className="saucer">
-            <ellipse cx="360" cy="705" rx="180" ry="26" fill="none" stroke="var(--logo-white)" strokeWidth="5" className="glow-white" />
-            <ellipse cx="360" cy="712" rx="150" ry="16" fill="none" stroke="var(--logo-green)" strokeWidth="6" className="glow-green" />
+            <ellipse cx="360" cy="705" rx="185" ry="42" fill="var(--green-dark)" />
+            <ellipse cx="360" cy="692" rx="175" ry="30" fill="var(--saucer-bg)" stroke="var(--green)" strokeWidth="5" />
           </g>
 
           {/* leaves */}
           <g className="leaves">
-            <path d="M255 445 C235 425, 225 400, 240 375 C260 390, 265 420, 255 445 Z" fill="#8ecb2e" stroke="#5a8f1a" strokeWidth="2" />
-            <path d="M285 435 C300 415, 320 400, 335 415 C315 430, 300 445, 285 435 Z" fill="#79b322" stroke="#5a8f1a" strokeWidth="2" />
+            <path d="M250 430 C228 408, 220 380, 236 352 C258 368, 264 402, 250 430 Z" fill="var(--green)" stroke="var(--green-dark)" strokeWidth="2" />
+            <path d="M282 420 C300 398, 322 384, 338 400 C316 416, 300 430, 282 420 Z" fill="var(--green-light)" stroke="var(--green-dark)" strokeWidth="2" />
           </g>
 
-          {/* steam forming code-bracket shape */}
-          <g className="steam" stroke="#8ecb2e" strokeWidth="10" fill="none" strokeLinecap="round" opacity="0.9">
-            <path className="glow-green" d="M330 470 C300 430, 300 400, 330 365" />
-            <path className="glow-green" d="M395 470 C425 430, 425 400, 395 365" />
+          {/* steam */}
+          <g className="steam" stroke="var(--green)" strokeWidth="10" fill="none" strokeLinecap="round">
+            <path className="a" d="M340 445 C310 405, 335 375, 315 340 C300 315, 320 295, 305 270" />
+            <path className="b" d="M375 445 C400 410, 380 380, 400 348" />
           </g>
-          {/* middle steam wisp */}
-          <path className="glow-green" d="M362 470 C350 420, 375 390, 360 340" stroke="#8ecb2e" strokeWidth="8" fill="none" strokeLinecap="round" opacity="0.85" />
+          <circle className="steam-dot" cx="425" cy="360" r="10" fill="var(--green)" />
 
           {/* glass outline */}
-          <path d="M255 470 L470 470 L440 690 L285 690 Z" fill="none" stroke="var(--logo-white)" strokeWidth="6" className="glow-white" strokeLinejoin="round" />
+          <path d="M248 435 L478 435 L445 665 L281 665 Z" fill="none" stroke="var(--green)" strokeWidth="14" strokeLinejoin="round" />
 
           {/* chai liquid */}
-          <path d="M268 495 L457 495 L432 675 L293 675 Z" fill="#c78a3a" />
-          <path d="M268 495 L457 495 L451 520 L274 520 Z" fill="#e0a752" />
+          <path d="M266 462 L460 462 L432 645 L294 645 Z" fill="var(--tea)" />
+          <path d="M266 462 L460 462 L453 486 L273 486 Z" fill="var(--tea-light)" />
 
-          {/* vertical ridge lines on glass */}
-          <g stroke="#a66b28" strokeWidth="3" opacity="0.5">
-            <line x1="310" y1="500" x2="300" y2="670" />
-            <line x1="345" y1="500" x2="340" y2="672" />
-            <line x1="380" y1="500" x2="380" y2="674" />
-            <line x1="415" y1="500" x2="420" y2="672" />
+          {/* vertical ridge lines */}
+          <g stroke="var(--tea-dark)" strokeWidth="3" opacity="0.55">
+            <line x1="305" y1="470" x2="296" y2="638" />
+            <line x1="340" y1="470" x2="336" y2="640" />
+            <line x1="375" y1="470" x2="376" y2="642" />
+            <line x1="410" y1="470" x2="416" y2="640" />
+            <line x1="440" y1="470" x2="450" y2="636" />
           </g>
 
-          {/* spoon */}
-          <line x1="300" y1="475" x2="290" y2="410" stroke="var(--logo-white)" strokeWidth="5" strokeLinecap="round" className="glow-white" />
+          {/* glass shine highlight */}
+          <path d="M275 460 C270 520, 268 580, 280 640" fill="none" stroke="#ffffff" strokeWidth="10" strokeLinecap="round" opacity="0.55" />
         </g>
 
         {/* ===================== TEXT LOCKUP ===================== */}
         <g transform="translate(540,0)">
           {/* left bracket */}
-          <text x="0" y="600" fontSize="140" fill="var(--logo-green)" className="bracket left glow-green" fontFamily="Arial Black, sans-serif" fontWeight="900">&lt;</text>
+          <text x="-70" y="600" fontSize="130" fill="var(--green)" className="bracket-left" fontFamily="Arial Black, sans-serif" fontWeight="900">&lt;</text>
 
           {/* CODE */}
-          <text x="90" y="605" fontSize="118" fill="var(--logo-white)" className="title-word w1 glow-title-white" fontFamily="Arial Black, sans-serif" fontWeight="900">CODE</text>
+          <text x="30" y="605" fontSize="118" fill="var(--black)" className="title-word w1" fontFamily="Arial Black, sans-serif" fontWeight="900">CODE</text>
 
           {/* & */}
-          <text x="440" y="605" fontSize="118" fill="var(--logo-green)" className="title-word w2 amp glow-title-green" fontFamily="Arial Black, sans-serif" fontWeight="900">&amp;</text>
+          <text x="380" y="605" fontSize="118" fill="var(--black)" className="title-word w2" fontFamily="Arial Black, sans-serif" fontWeight="900">&amp;</text>
 
           {/* CHAI */}
-          <text x="565" y="605" fontSize="118" fill="var(--logo-white)" className="title-word w3 glow-title-white" fontFamily="Arial Black, sans-serif" fontWeight="900">CHAI</text>
+          <text x="505" y="605" fontSize="118" fill="var(--black)" className="title-word w3" fontFamily="Arial Black, sans-serif" fontWeight="900">CHAI</text>
 
           {/* right bracket /> */}
-          <text x="870" y="600" fontSize="140" fill="var(--logo-green)" className="bracket right glow-green" fontFamily="Arial Black, sans-serif" fontWeight="900">/&gt;</text>
+          <text x="810" y="600" fontSize="118" fill="var(--green)" className="bracket-right" fontFamily="Arial Black, sans-serif" fontWeight="900">&lt;/&gt;</text>
 
           {/* subtitle line */}
           <g className="subtitle">
-            <line x1="35" y1="660" x2="130" y2="660" stroke="var(--logo-green)" strokeWidth="5" className="glow-green subline" />
-            <text x="150" y="672" fontSize="46" letterSpacing="6" fill="var(--logo-white)" className="glow-white" fontFamily="Arial, sans-serif" fontWeight="700">WITH SUDARSHAN</text>
-            <line x1="900" y1="660" x2="995" y2="660" stroke="var(--logo-green)" strokeWidth="5" className="glow-green subline" />
+            <line x1="35" y1="655" x2="130" y2="655" stroke="var(--gray)" strokeWidth="4" className="subline" />
+            <text x="150" y="666" fontSize="44" letterSpacing="6" fill="var(--gray)" fontFamily="Arial, sans-serif" fontWeight="700">WITH SUDARSHAN</text>
+            <line x1="870" y1="655" x2="965" y2="655" stroke="var(--gray)" strokeWidth="4" className="subline" />
           </g>
         </g>
       </svg>
