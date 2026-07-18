@@ -5,8 +5,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { Calendar, Clock, Share2, ArrowLeft, Tag, BookOpen, AlertCircle } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '../utils/posts';
-import { BlogCard } from '../components/BlogCard';
-
 // Highlight.js styles for code blocks
 import 'highlight.js/styles/github-dark.css';
 
@@ -198,17 +196,32 @@ export const BlogPost: React.FC = () => {
         {relatedPosts.length > 0 && (
           <section className="space-y-6 pt-6">
             <h2 className="font-serif font-black text-xl text-ink dark:text-parchment flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-chai-500" />
+              <BookOpen className="w-5 h-5 text-brand-green" />
               Related Brews
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <ul className="divide-y divide-brand-line border-y border-brand-line">
               {relatedPosts.map((rPost) => (
-                <div key={rPost.slug} className="h-full">
-                  <BlogCard post={rPost} />
-                </div>
+                <li key={rPost.slug} className="group">
+                  <Link
+                    to={`/blog/${rPost.slug}`}
+                    className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 py-4 px-1 sm:px-2 transition-all duration-200 group-hover:pl-4 group-hover:bg-gradient-to-r group-hover:from-brand-green/[0.04] group-hover:to-transparent"
+                  >
+                    <div className="flex items-baseline gap-3 min-w-0">
+                      <span className="text-brand-green-dim group-hover:text-brand-green font-mono transition-transform duration-200 group-hover:translate-x-1">
+                        →
+                      </span>
+                      <span className="font-serif text-base sm:text-lg text-ink dark:text-brand-ink font-medium leading-snug group-hover:text-brand-green transition-colors truncate">
+                        {rPost.frontmatter.title}
+                      </span>
+                    </div>
+                    <div className="font-mono text-xs text-ink/40 dark:text-brand-faint shrink-0 whitespace-nowrap text-left sm:text-right mt-1 sm:mt-0">
+                      <span className="text-ink/70 dark:text-brand-dim">{rPost.readingTime}</span> · {rPost.frontmatter.date}
+                    </div>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         )}
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Tag as TagIcon, Hash } from 'lucide-react';
-import { BlogCard } from '../components/BlogCard';
 import { getAllPosts } from '../utils/posts';
 
 export const Tags: React.FC = () => {
@@ -101,17 +100,32 @@ export const Tags: React.FC = () => {
         </div>
 
         {filteredPosts.length === 0 ? (
-          <div className="text-center py-20 bg-cream/40 dark:bg-espresso/10 rounded-2xl border border-dashed border-mist/15 font-mono text-sm text-mist">
-            No articles found matching this tag.
+          <div className="text-center py-12 bg-brand-raised/20 border border-dashed border-brand-line rounded-xl">
+            <p className="text-ink/45 dark:text-brand-faint font-mono text-sm">No articles found matching this tag.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul className="divide-y divide-brand-line border-y border-brand-line">
             {filteredPosts.map((post) => (
-              <div key={post.slug} className="h-full">
-                <BlogCard post={post} />
-              </div>
+              <li key={post.slug} className="group">
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 py-5 px-1 sm:px-2 transition-all duration-200 group-hover:pl-4 group-hover:bg-gradient-to-r group-hover:from-brand-green/[0.04] group-hover:to-transparent"
+                >
+                  <div className="flex items-baseline gap-3 min-w-0">
+                    <span className="text-brand-green-dim group-hover:text-brand-green font-mono transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                    <span className="font-serif text-lg text-ink dark:text-brand-ink font-medium leading-snug group-hover:text-brand-green transition-colors truncate">
+                      {post.frontmatter.title}
+                    </span>
+                  </div>
+                  <div className="font-mono text-xs text-ink/40 dark:text-brand-faint shrink-0 whitespace-nowrap text-left sm:text-right mt-1 sm:mt-0">
+                    <span className="text-ink/70 dark:text-brand-dim">{post.readingTime}</span> · {post.frontmatter.date}
+                  </div>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
 
