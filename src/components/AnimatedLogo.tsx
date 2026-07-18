@@ -6,6 +6,153 @@ interface AnimatedLogoProps {
 }
 
 export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = '', height = '100%' }) => {
+  const css = `
+    svg {
+      --green-dark: #3f6b28;
+      --green: #4f8a34;
+      --green-light: #7fb84a;
+      --black: #1C2530;
+      --gray: #6e6e6e;
+      --tea-dark: #a9631c;
+      --tea: #d98f2e;
+      --tea-light: #f0b45a;
+      --saucer-bg: #ffffff;
+    }
+    
+    /* Dark mode overrides using standard CSS selectors */
+    html.dark svg,
+    .dark svg,
+    [class*="dark"] svg {
+      --black: #f5f5f5;
+      --gray: #8B95A1;
+      --saucer-bg: #12181F;
+    }
+
+    /* glass + saucer gentle float */
+    .glass-group {
+      animation: floaty 4s ease-in-out infinite;
+      transform-origin: 360px 692px;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .saucer {
+      animation: saucerPulse 4s ease-in-out infinite;
+      transform-origin: 360px 705px;
+    }
+    @keyframes saucerPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* leaves sway */
+    .leaves {
+      animation: sway 3.4s ease-in-out infinite;
+      transform-origin: 266px 425px;
+    }
+    @keyframes sway {
+      0%, 100% { transform: rotate(-4deg); }
+      50% { transform: rotate(4deg); }
+    }
+
+    /* steam swirl loop */
+    .steam path {
+      stroke-dasharray: 260;
+      stroke-dashoffset: 260;
+      opacity: 0;
+      animation: rise 3.4s ease-in-out infinite;
+    }
+    .steam path.a { animation-delay: 0s; }
+    .steam path.b { animation-delay: 0.6s; }
+    @keyframes rise {
+      0% { stroke-dashoffset: 260; opacity: 0; transform: translateY(8px); }
+      15% { opacity: 1; }
+      55% { stroke-dashoffset: 0; opacity: 1; transform: translateY(-4px); }
+      82% { opacity: 0.4; }
+      100% { stroke-dashoffset: 0; opacity: 0; transform: translateY(-14px); }
+    }
+
+    /* the little steam dot */
+    .steam-dot {
+      animation: dotPulse 3.4s ease-in-out infinite;
+      transform-origin: 425px 360px;
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* brackets idle bounce */
+    .bracket-left {
+      animation: bounceL 3s ease-in-out infinite;
+      transform-origin: 0px 600px;
+    }
+    @keyframes bounceL {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-6px); }
+    }
+    
+    .bracket-right {
+      animation: bounceR 3s ease-in-out infinite;
+      transform-origin: 810px 600px;
+    }
+    @keyframes bounceR {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
+    /* text entrance */
+    .title-word {
+      opacity: 0;
+      animation: revealUp 0.8s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+    .title-word.w1 { animation-delay: 0.15s; }
+    .title-word.w2 { animation-delay: 0.4s; }
+    .title-word.w3 { animation-delay: 0.65s; }
+    @keyframes revealUp {
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .subtitle {
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+      animation-delay: 1s;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .subline {
+      transform-origin: center;
+      animation: growLine 0.8s ease forwards;
+      animation-delay: 1s;
+      transform: scaleX(0);
+    }
+    @keyframes growLine {
+      to { transform: scaleX(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glass-group, .saucer, .leaves, .steam path, .steam-dot, .bracket-left, .bracket-right, .subline {
+        animation: none !important;
+      }
+      .steam path {
+        stroke-dashoffset: 0 !important;
+        opacity: 0.6 !important;
+      }
+      .title-word, .subtitle {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .subline {
+        transform: scaleX(1) !important;
+      }
+    }
+  `;
+
   return (
     <div className={`inline-block ${className}`} style={{ height }}>
       <svg
@@ -13,152 +160,7 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = '', heig
         className="w-auto h-full overflow-visible select-none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <style>{`
-          svg {
-            --green-dark: #3f6b28;
-            --green: #4f8a34;
-            --green-light: #7fb84a;
-            --black: #1C2530;
-            --gray: #6e6e6e;
-            --tea-dark: #a9631c;
-            --tea: #d98f2e;
-            --tea-light: #f0b45a;
-            --saucer-bg: #ffffff;
-          }
-          
-          /* Dark mode overrides */
-          :global(.dark) svg,
-          .dark svg,
-          [class*="dark"] svg {
-            --black: #f5f5f5;
-            --gray: #8B95A1;
-            --saucer-bg: #12181F;
-          }
-
-          /* glass + saucer gentle float */
-          .glass-group {
-            animation: floaty 4s ease-in-out infinite;
-            transform-origin: 360px 692px;
-          }
-          @keyframes floaty {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-          }
-
-          .saucer {
-            animation: saucerPulse 4s ease-in-out infinite;
-            transform-origin: 360px 705px;
-          }
-          @keyframes saucerPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-          }
-
-          /* leaves sway */
-          .leaves {
-            animation: sway 3.4s ease-in-out infinite;
-            transform-origin: 266px 425px;
-          }
-          @keyframes sway {
-            0%, 100% { transform: rotate(-4deg); }
-            50% { transform: rotate(4deg); }
-          }
-
-          /* steam swirl loop */
-          .steam path {
-            stroke-dasharray: 260;
-            stroke-dashoffset: 260;
-            opacity: 0;
-            animation: rise 3.4s ease-in-out infinite;
-          }
-          .steam path.a { animation-delay: 0s; }
-          .steam path.b { animation-delay: 0.6s; }
-          @keyframes rise {
-            0% { stroke-dashoffset: 260; opacity: 0; transform: translateY(8px); }
-            15% { opacity: 1; }
-            55% { stroke-dashoffset: 0; opacity: 1; transform: translateY(-4px); }
-            82% { opacity: 0.4; }
-            100% { stroke-dashoffset: 0; opacity: 0; transform: translateY(-14px); }
-          }
-
-          /* the little steam dot */
-          .steam-dot {
-            animation: dotPulse 3.4s ease-in-out infinite;
-            transform-origin: 425px 360px;
-          }
-          @keyframes dotPulse {
-            0%, 100% { opacity: 0.4; transform: scale(0.85); }
-            50% { opacity: 1; transform: scale(1.1); }
-          }
-
-          /* brackets idle bounce */
-          .bracket-left {
-            animation: bounceL 3s ease-in-out infinite;
-            transform-origin: 0px 600px;
-          }
-          @keyframes bounceL {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-6px); }
-          }
-          
-          .bracket-right {
-            animation: bounceR 3s ease-in-out infinite;
-            transform-origin: 810px 600px;
-          }
-          @keyframes bounceR {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(6px); }
-          }
-
-          /* text entrance */
-          .title-word {
-            opacity: 0;
-            animation: revealUp 0.8s cubic-bezier(.2,.8,.2,1) forwards;
-          }
-          .title-word.w1 { animation-delay: 0.15s; }
-          .title-word.w2 { animation-delay: 0.4s; }
-          .title-word.w3 { animation-delay: 0.65s; }
-          @keyframes revealUp {
-            0% { opacity: 0; transform: translateY(14px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-
-          .subtitle {
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 1s;
-          }
-          @keyframes fadeIn {
-            to { opacity: 1; }
-          }
-
-          .subline {
-            transform-origin: center;
-            animation: growLine 0.8s ease forwards;
-            animation-delay: 1s;
-            transform: scaleX(0);
-          }
-          @keyframes growLine {
-            to { transform: scaleX(1); }
-          }
-
-          @media (prefers-reduced-motion: reduce) {
-            .glass-group, .saucer, .leaves, .steam path, .steam-dot, .bracket-left, .bracket-right, .subline {
-              animation: none !important;
-            }
-            .steam path {
-              stroke-dashoffset: 0 !important;
-              opacity: 0.6 !important;
-            }
-            .title-word, .subtitle {
-              opacity: 1 !important;
-              transform: none !important;
-            }
-            .subline {
-              transform: scaleX(1) !important;
-            }
-          }
-        `}</style>
+        <style dangerouslySetInnerHTML={{ __html: css }} />
 
         {/* ===================== CHAI GLASS ===================== */}
         <g className="glass-group">

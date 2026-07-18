@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Coffee, ArrowRight } from 'lucide-react';
 import { BlogCard } from '../components/BlogCard';
 import { getAllPosts } from '../utils/posts';
-import { AnimatedLogo } from '../components/AnimatedLogo';
+
 
 export const Home: React.FC = () => {
   const allPosts = getAllPosts();
@@ -13,10 +13,14 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-12 py-6">
 
-      {/* Compact Hero — minimal, chai-warm */}
-      <section className="text-center py-10 px-4 max-w-2xl mx-auto space-y-6">
+      {/* Hero — dark neon logo centered */}
+      <section className="text-center py-8 px-4 max-w-3xl mx-auto space-y-6">
         <div className="flex justify-center select-none">
-          <AnimatedLogo height={220} />
+          <img
+            src="/code-chai-with-sudarshan/images/logo-dark.png"
+            alt="Code & Chai with Sudarshan"
+            className="w-full max-w-2xl h-auto object-contain rounded-2xl"
+          />
         </div>
 
         <p className="text-sm sm:text-base text-ink/70 dark:text-parchment/70 font-sans max-w-lg mx-auto leading-relaxed">
