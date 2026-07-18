@@ -15,11 +15,11 @@ export const Nav: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
           {/* Cropped Official Logo */}
-          <Link to="/" className="flex items-center focus:outline-none">
+          <Link to="/" className="flex items-center focus:outline-none transition-transform hover:scale-[1.01] duration-200">
             <img
               src="/code-chai-with-sudarshan/images/logo-cropped.png"
               alt="Code & Chai with Sudarshan"
-              className="h-10 sm:h-11 w-auto object-contain bg-cream/90 dark:bg-parchment/95 px-2.5 py-1 rounded-xl shadow-sm border border-mist/10 transition-transform hover:scale-[1.02] duration-200"
+              className="h-11 sm:h-12 w-auto object-contain"
             />
           </Link>
 
