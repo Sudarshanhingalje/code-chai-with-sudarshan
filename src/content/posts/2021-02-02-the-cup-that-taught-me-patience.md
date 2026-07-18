@@ -4,7 +4,7 @@ description: "A small story about a cup of chai, waiting, and one lesson that ch
 date: 2021-02-02
 tags: [journal, life, chai, lessons, learning, developer, mindset]
 category: journal
-coverImage: /code-chai-with-sudarshan/blob/main/public/images/chai-patience.jpg
+coverImage: /code-chai-with-sudarshan/images/chai-patience.jpg
 author: Sudarshan
 featured: false
 draft: false
