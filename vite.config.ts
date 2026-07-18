@@ -4,6 +4,6 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/code-chai-blog/",
+  base: "/code-chai-with-sudarshan/",
   assetsInclude: ["**/*.md"],
 })

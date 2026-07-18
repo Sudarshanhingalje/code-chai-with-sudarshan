@@ -1,39 +1,52 @@
 ---
-title: "Welcome to Code & Chai"
-description: "An introduction to this personal journal and tech blog, and why I chose the name Code & Chai."
+title: "Welcome to Code & Chai with Sudarshan"
+description: "An introduction to this personal tech blog — why I started writing, what I'll cover, and what you can expect from Code & Chai."
 date: 2026-07-18
-tags: [journal, life, intro]
+tags: [journal, intro, life]
 category: journal
-coverImage: ""
-author: Sudarshan
+coverImage: /code-chai-with-sudarshan/images/journal-cover.png
+author: Sudarshan Hingalje
 featured: true
 draft: false
 ---
 
-Welcome to **Code & Chai**! This blog is a corner of the internet where I write about software engineering, Java/Spring development, frontend frameworks, and my general experiences as a software developer.
+Welcome to **Code & Chai** — a small corner of the internet where I write about software engineering and daily life as a developer.
 
 ## Why "Code & Chai"?
 
-For me, code and chai (tea) are inseparable. A warm, aromatic cup of chai is the perfect companion when debugging a complex issue or designing a new software component.
+For me, chai and code are inseparable. A warm cup of chai is the perfect companion when debugging a nasty NullPointerException at midnight or designing a new microservice architecture on a quiet morning.
 
-- **Chai** represents patience, warmth, and ritual.
-- **Code** represents logic, creation, and problem solving.
+- **Chai** = patience, warmth, ritual, and comfort
+- **Code** = logic, creativity, and problem-solving
 
-By combining them, I hope to create a space that feels like a cozy tea shop where we can discuss technical and personal topics in a calm, thoughtful manner.
+Together they represent how I approach work — with focus, but also with calm.
 
-### What to expect here?
+## What I'll Write About
 
-I plan to write daily or semi-daily entries covering:
-1. **Tech Notes**: Spring Boot microservice design, React 19 performance tips, and database optimizations.
-2. **Journal**: Thoughts on productivity, working remotely, and my experiences as a developer.
-3. **Tutorials**: Step-by-step guides for developers trying to build things from scratch.
+This blog will be a mix of two things:
 
-```java
-public class Welcome {
-    public static void main(String[] args) {
-        System.out.println("Hello, welcome to Code & Chai!");
-    }
-}
-```
+### 🖥️ Tech Notes
+Daily developer notes on things I'm learning or building:
+- **Java** & **Spring Boot** microservices, clean architecture, performance tuning
+- **React** + **TypeScript** patterns, hooks, state management
+- DevOps — Docker, GitHub Actions, CI/CD pipelines
+- Database design, REST APIs, JWT security
 
-Thank you for visiting, and I hope you stay around for a cup of tea!
+### 📓 Journal Entries
+Honest entries about life as a developer:
+- Learning in public — what worked, what didn't
+- Side projects and weekend builds
+- Thoughts on productivity and developer mental health
+
+## The Publishing Workflow
+
+This blog runs on a dead-simple system:
+1. I write a Markdown file
+2. `git push`
+3. GitHub Actions deploys it automatically in ~2 minutes
+
+No admin panel. No database. The git repo *is* the CMS.
+
+---
+
+Thanks for being here. Grab a cup of chai and stay a while ☕
