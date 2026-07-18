@@ -13,16 +13,56 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-12 py-6">
 
-      {/* Hero — dark neon logo centered */}
-      <section className="text-center py-8 px-4 max-w-3xl mx-auto space-y-6">
-        <div className="flex justify-center select-none">
-          <img
-            src="/code-chai-with-sudarshan/images/logo-dark.png"
-            alt="Code & Chai with Sudarshan"
-            className="w-full max-w-2xl h-auto object-contain rounded-2xl"
-          />
-        </div>
+      {/* Hero — cup + text logo layout */}
+      <section className="py-10 px-4 max-w-4xl mx-auto">
+        {/* Black background hero panel */}
+        <div className="bg-black rounded-3xl px-8 py-10 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 select-none shadow-2xl">
 
+          {/* Cup Image */}
+          <img
+            src="/code-chai-with-sudarshan/images/chai-cup.png"
+            alt="Chai cup"
+            className="w-40 sm:w-52 h-auto object-contain drop-shadow-lg shrink-0"
+          />
+
+          {/* Text Block */}
+          <div className="text-center sm:text-left space-y-3">
+            <h1
+              style={{
+                color: '#ffffff',
+                fontFamily: 'Poppins, Arial Black, sans-serif',
+                fontWeight: 800,
+                fontSize: 'clamp(32px, 6vw, 68px)',
+                lineHeight: 1.1,
+                textShadow: '0 0 15px rgba(255,255,255,0.25)',
+                margin: 0,
+              }}
+            >
+              <span style={{ color: '#7CFF32', textShadow: '0 0 18px #7CFF32' }}>&lt;</span>
+              {' '}CODE{' '}
+              <span style={{ color: '#7CFF32', textShadow: '0 0 18px #7CFF32' }}>&amp;</span>
+              {' '}CHAI{' '}
+              <span style={{ color: '#7CFF32', textShadow: '0 0 18px #7CFF32' }}>/&gt;</span>
+            </h1>
+
+            <p
+              style={{
+                color: '#d8d8d8',
+                fontFamily: 'Poppins, Arial, sans-serif',
+                fontSize: 'clamp(13px, 2vw, 22px)',
+                letterSpacing: '8px',
+                margin: 0,
+                paddingTop: '8px',
+              }}
+            >
+              ── WITH SUDARSHAN ──
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sub-description */}
+      <div className="text-center px-4 -mt-6">
         <p className="text-sm sm:text-base text-ink/70 dark:text-parchment/70 font-sans max-w-lg mx-auto leading-relaxed">
           Daily brew of <span className="font-semibold text-brew-600 dark:text-brew-400">Java · Spring Boot · React</span> notes
           and personal journal entries by <span className="font-semibold text-ink dark:text-parchment">Sudarshan Hingalje</span>.
@@ -46,7 +86,7 @@ export const Home: React.FC = () => {
             GitHub
           </a>
         </div>
-      </section>
+      </div>
 
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (
