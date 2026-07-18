@@ -21,11 +21,19 @@ export const Blog: React.FC = () => {
 
   const projects = [
     {
+      name: 'Developer Portfolio',
+      desc: 'My personal developer portfolio showcasing my projects, tech stack, experience, and contact channels.',
+      links: [
+        { label: 'Live', href: 'https://sudarshan-hingalje-rjs-portfolio.vercel.app/' },
+        { label: 'GitHub', href: 'https://github.com/Sudarshanhingalje/sudarshan-hingalje-rjs-portfolio' },
+      ],
+      active: true,
+    },
+    {
       name: 'Elevora AI',
       desc: 'An AI SaaS marketplace for Indian businesses — dental clinics, gyms, agencies. Shopify, for AI agents.',
       links: [
-        { label: 'Live', href: '#' },
-        { label: 'GitHub', href: 'https://github.com/Sudarshanhingalje' },
+        { label: 'GitHub', href: 'https://github.com/Sudarshanhingalje/elevora-ai' },
       ],
       active: true,
     },
@@ -33,7 +41,9 @@ export const Blog: React.FC = () => {
       name: 'ScrapSavvy',
       desc: 'Scrapyard management app with order tracking, built on React and Spring Boot.',
       links: [
-        { label: 'GitHub', href: 'https://github.com/Sudarshanhingalje' },
+        { label: 'Live', href: 'https://scrapsavvy.netlify.app/' },
+        { label: 'Frontend GitHub', href: 'https://github.com/Sudarshanhingalje/ScrapSavvy-frontend' },
+        { label: 'Backend GitHub', href: 'https://github.com/Sudarshanhingalje/ScrapSavvy-backend' },
       ],
       active: true,
     },
@@ -41,7 +51,7 @@ export const Blog: React.FC = () => {
       name: 'LensDock',
       desc: 'Local camera rental booking platform for the Kolhapur district.',
       links: [
-        { label: 'Live', href: '#' },
+        { label: 'Live', href: 'https://lens-dock.vercel.app/' },
       ],
       active: true,
     },
