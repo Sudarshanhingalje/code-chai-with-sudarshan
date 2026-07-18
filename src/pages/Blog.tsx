@@ -131,7 +131,36 @@ export const Blog: React.FC = () => {
           </div>
         </div>
 
-        {filteredPosts.length === 0 ? (
+        {selectedCategory === 'project' ? (
+          <ul className="divide-y divide-brand-line border-y border-brand-line">
+            {projects.map((proj) => (
+              <li key={proj.name} className="py-6 px-1 sm:px-2">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                  <div className="space-y-2">
+                    <div className="font-serif text-xl text-ink dark:text-brand-ink flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-green shadow-[0_0_8px_#8ecb2e]"></span>
+                      {proj.name}
+                    </div>
+                    <p className="text-sm text-ink/80 dark:text-brand-dim max-w-lg leading-relaxed">{proj.desc}</p>
+                  </div>
+                  <div className="flex gap-4 font-mono text-xs text-ink/75 dark:text-brand-dim pt-1.5 shrink-0">
+                    {proj.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-brand-green border-b border-transparent hover:border-brand-green-dim transition-all"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : filteredPosts.length === 0 ? (
           <div className="text-center py-12 bg-brand-raised/20 border border-dashed border-brand-line rounded-xl">
             <p className="text-ink/45 dark:text-brand-faint font-mono text-sm">No writing pieces found in this category.</p>
           </div>
@@ -159,41 +188,6 @@ export const Blog: React.FC = () => {
             ))}
           </ul>
         )}
-      </section>
-
-      {/* ── PROJECTS ── */}
-      <section id="projects" className="border-t border-brand-line pt-10 px-4 max-w-3xl mx-auto">
-        <div className="mb-6">
-          <div className="font-mono text-xs text-brand-green tracking-wider">// building</div>
-          <h2 className="font-serif text-2xl font-semibold text-ink dark:text-brand-ink mt-1">Projects</h2>
-        </div>
-
-        <div className="divide-y divide-brand-line border-y border-brand-line">
-          {projects.map((proj) => (
-            <div key={proj.name} className="flex flex-col sm:flex-row justify-between items-start gap-4 py-6">
-              <div className="space-y-2">
-                <div className="font-serif text-xl text-ink dark:text-brand-ink flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-green shadow-[0_0_8px_#8ecb2e]"></span>
-                  {proj.name}
-                </div>
-                <p className="text-sm text-ink/80 dark:text-brand-dim max-w-lg leading-relaxed">{proj.desc}</p>
-              </div>
-              <div className="flex gap-4 font-mono text-xs text-ink/75 dark:text-brand-dim pt-1.5 shrink-0">
-                {proj.links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand-green border-b border-transparent hover:border-brand-green-dim transition-all"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* ── ROADMAPS ── */}
