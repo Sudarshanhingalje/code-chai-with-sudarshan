@@ -1,7 +1,6 @@
 import React from 'react';
 import { Heart } from 'lucide-react';
 
-// Inline SVG icons
 const GithubIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4 11.5 11.5 0 0 1 3 .4c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/>
@@ -31,50 +30,34 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
-      href: 'https://github.com/Sudarshanhingaljethese',
-      label: 'GitHub',
-      icon: <GithubIcon />,
-    },
-    {
-      href: 'https://www.linkedin.com/in/sudarshanhingalje/',
-      label: 'LinkedIn',
-      icon: <LinkedinIcon />,
-    },
-    {
-      href: 'https://www.instagram.com/threadcode08/',
-      label: 'Instagram',
-      icon: <InstagramIcon />,
-    },
-    {
-      href: 'mailto:sudarshanhingalje1@gmail.com',
-      label: 'Email',
-      icon: <MailIcon />,
-    },
+    { href: 'https://github.com/Sudarshanhingaljethese', label: 'GitHub', icon: <GithubIcon /> },
+    { href: 'https://www.linkedin.com/in/sudarshanhingalje/', label: 'LinkedIn', icon: <LinkedinIcon /> },
+    { href: 'https://www.instagram.com/threadcode08/', label: 'Instagram', icon: <InstagramIcon /> },
+    { href: 'mailto:sudarshanhingalje1@gmail.com', label: 'Email', icon: <MailIcon /> },
   ];
 
   return (
     <footer className="w-full border-t border-mist/10 bg-cream/30 dark:bg-espresso/30 mt-auto transition-colors duration-200">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
 
-        <div className="text-center md:text-left space-y-1">
-          <p className="text-sm font-mono text-ink/75 dark:text-parchment/75">
+        <div className="space-y-1">
+          <p className="text-xs sm:text-sm font-mono text-ink/75 dark:text-parchment/75">
             &copy; {currentYear} Code &amp; Chai with Sudarshan
           </p>
-          <p className="text-xs text-mist flex items-center justify-center md:justify-start gap-1 font-sans">
+          <p className="text-xs text-mist flex items-center justify-center sm:justify-start gap-1 font-sans">
             Crafted with <Heart className="w-3 h-3 text-chai-500 fill-current animate-pulse" /> by{' '}
             <span className="font-semibold text-ink dark:text-parchment">Sudarshan Hingalje</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {socialLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target={link.href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-xl border border-mist/15 hover:border-brew-500 hover:text-brew-600 dark:hover:text-brew-400 text-mist transition-all focus:outline-none focus:ring-1 focus:ring-brew-500"
+              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-mist/15 hover:border-brew-500 hover:text-brew-600 dark:hover:text-brew-400 text-mist transition-all focus:outline-none focus:ring-1 focus:ring-brew-500"
               aria-label={link.label}
             >
               {link.icon}

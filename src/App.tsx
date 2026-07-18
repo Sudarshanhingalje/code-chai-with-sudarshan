@@ -14,11 +14,11 @@ import { Write } from './pages/Write';
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <div className="flex flex-col min-h-screen bg-cream dark:bg-espresso text-ink dark:text-parchment transition-colors duration-200">
+      <div className="flex flex-col min-h-screen bg-cream dark:bg-espresso text-ink dark:text-parchment transition-colors duration-200 overflow-x-hidden">
 
         <Nav />
 
-        <main className="flex-grow max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 pb-16">
+        <main className="flex-grow w-full py-2 pb-12 sm:pb-16">
           <Routes>
             {/* Home directly shows the blog */}
             <Route path="/" element={<Home />} />

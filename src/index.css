@@ -4,12 +4,38 @@
 
 /* Custom base and global styling */
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply antialiased transition-colors duration-200;
+    /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    width: 100%;
   }
-  
+
+  /* Responsive images/videos/embeds */
+  img, video, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif text-ink dark:text-parchment;
+    /* Prevent text overflow on small screens */
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  p, li, span {
+    overflow-wrap: break-word;
   }
 }
 

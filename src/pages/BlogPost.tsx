@@ -94,14 +94,14 @@ export const BlogPost: React.FC = () => {
     <div className="relative">
       
       {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 h-1 bg-mist/10 z-40">
+      <div className="fixed top-14 sm:top-16 left-0 right-0 h-1 bg-mist/10 z-40">
         <div
           className="h-full bg-brew-500 transition-all duration-75"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-8 space-y-8 animate-in fade-in duration-300">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6 sm:space-y-8 animate-in fade-in duration-300">
         
         {/* Back navigation & Share row */}
         <div className="flex items-center justify-between border-b border-mist/10 pb-4">
@@ -138,7 +138,7 @@ export const BlogPost: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-ink dark:text-parchment leading-tight tracking-tight">
+          <h1 className="font-serif font-black text-2xl sm:text-4xl md:text-5xl text-ink dark:text-parchment leading-tight tracking-tight">
             {title}
           </h1>
 
@@ -167,7 +167,7 @@ export const BlogPost: React.FC = () => {
         )}
 
         {/* Rendered Markdown Body */}
-        <article className="markdown-body prose dark:prose-invert prose-stone max-w-none text-ink dark:text-parchment leading-relaxed text-base sm:text-lg space-y-6 font-sans">
+        <article className="markdown-body prose dark:prose-invert prose-stone max-w-none text-ink dark:text-parchment leading-relaxed text-sm sm:text-base md:text-lg space-y-4 sm:space-y-6 font-sans">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeHighlight]}
@@ -202,7 +202,7 @@ export const BlogPost: React.FC = () => {
               Related Brews
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {relatedPosts.map((rPost) => (
                 <div key={rPost.slug} className="h-full">
                   <BlogCard post={rPost} />
