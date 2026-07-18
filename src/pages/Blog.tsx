@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '../utils/posts';
 
 export const Blog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const allPosts = getAllPosts();
-
-  // State to trigger progress bar animation when mounted
-  const [animateProgress, setAnimateProgress] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimateProgress(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
 
   const categories = [
     { id: 'all', label: 'All Brews' },
@@ -26,14 +18,6 @@ export const Blog: React.FC = () => {
     if (selectedCategory === 'all') return true;
     return post.frontmatter.category.toLowerCase() === selectedCategory;
   });
-
-  const skills = [
-    { name: 'Java Virtual Threads', pct: 95 },
-    { name: 'Spring Boot', pct: 90 },
-    { name: 'Linux', pct: 70 },
-    { name: 'Docker', pct: 55 },
-    { name: 'AWS', pct: 40 },
-  ];
 
   const projects = [
     {
@@ -167,34 +151,11 @@ export const Blog: React.FC = () => {
         )}
       </section>
 
-      {/* ── LEARNING JOURNEY ── */}
-      <section id="journey" className="border-t border-brand-line pt-10 px-4 max-w-3xl mx-auto">
-        <div className="mb-6">
-          <div className="font-mono text-xs text-brand-green tracking-wider">// today-im-learning</div>
-          <h2 className="font-serif text-2xl font-semibold text-ink dark:text-brand-ink mt-1">Learning journey</h2>
-        </div>
-
-        <div className="space-y-4">
-          {skills.map((skill) => (
-            <div key={skill.name} className="grid grid-cols-[130px_1fr_42px] sm:grid-cols-[160px_1fr_42px] items-center gap-4 py-1.5">
-              <div className="font-mono text-xs sm:text-sm text-ink dark:text-brand-ink truncate">{skill.name}</div>
-              <div className="h-1.5 bg-brand-line rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-brand-green-dim to-brand-green rounded-full transition-all duration-1000 ease-out"
-                  style={{ width: animateProgress ? `${skill.pct}%` : '0%' }}
-                />
-              </div>
-              <div className="font-mono text-xs text-ink/40 dark:text-brand-faint text-right">{skill.pct}%</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── PROJECTS ── */}
       <section id="projects" className="border-t border-brand-line pt-10 px-4 max-w-3xl mx-auto">
         <div className="mb-6">
           <div className="font-mono text-xs text-brand-green tracking-wider">// building</div>
-          <h2 className="font-serif text-2xl font-semibold text-brand-ink mt-1">Projects</h2>
+          <h2 className="font-serif text-2xl font-semibold text-ink dark:text-brand-ink mt-1">Projects</h2>
         </div>
 
         <div className="divide-y divide-brand-line border-y border-brand-line">
@@ -267,35 +228,6 @@ export const Blog: React.FC = () => {
               <p className="text-sm text-ink/80 dark:text-brand-dim leading-relaxed">{note.text}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ── NEWSLETTER ── */}
-      <section className="border-t border-brand-line py-10 px-4 max-w-3xl mx-auto">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="space-y-1">
-            <div className="font-mono text-xs text-brand-green tracking-wider">// stay-updated</div>
-            <h2 className="font-serif text-xl sm:text-2xl font-semibold text-ink dark:text-brand-ink">Get new posts by email</h2>
-            <p className="text-sm text-ink/80 dark:text-brand-dim max-w-sm">No spam, no fluff — just what I'm learning, roughly once a week.</p>
-          </div>
-
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex w-full md:w-auto border border-brand-line rounded-lg overflow-hidden shrink-0 shadow-lg"
-          >
-            <input
-              type="email"
-              placeholder="you@email.com"
-              required
-              className="bg-brand-raised/40 dark:bg-brand-raised/85 px-4 py-3 text-sm font-mono text-ink dark:text-brand-ink placeholder-ink/40 dark:placeholder-brand-faint focus:outline-none w-full sm:w-56"
-            />
-            <button
-              type="submit"
-              className="bg-brand-green hover:bg-[#a3e83f] text-black font-mono font-semibold text-sm px-5 py-3 transition-colors shrink-0"
-            >
-              Subscribe
-            </button>
-          </form>
         </div>
       </section>
 

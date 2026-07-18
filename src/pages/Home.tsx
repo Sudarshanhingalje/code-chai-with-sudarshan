@@ -1,16 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, ArrowRight, Coffee } from 'lucide-react';
-import { BlogCard } from '../components/BlogCard';
-import { getAllPosts } from '../utils/posts';
+import { BookOpen, Coffee } from 'lucide-react';
 
 export const Home: React.FC = () => {
-  const allPosts = getAllPosts();
-  const featuredPosts = allPosts.filter((p) => p.frontmatter.featured).slice(0, 3);
-  const latestPosts = allPosts.slice(0, 20);
-
   return (
-    <div className="space-y-12 py-4 sm:py-6">
+    <div className="py-4 sm:py-6 flex flex-col justify-center items-center min-h-[60vh]">
 
       {/* ── Hero ── */}
       <section className="px-4 sm:px-6 max-w-4xl mx-auto text-center space-y-6">
@@ -49,54 +43,6 @@ export const Home: React.FC = () => {
             GitHub
           </a>
         </div>
-      </section>
-
-      {/* ── Featured Posts ── */}
-      {featuredPosts.length > 0 && (
-        <section className="space-y-5 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="flex items-center justify-between border-b border-mist/10 pb-3">
-            <h2 className="font-serif font-black text-lg sm:text-xl tracking-tight text-ink dark:text-parchment flex items-center gap-2">
-              <span className="text-chai-500">★</span> Featured
-            </h2>
-            <Link
-              to="/blog"
-              className="text-xs font-mono font-bold text-brew-600 dark:text-brew-400 hover:text-brew-700 flex items-center gap-1 group"
-            >
-              All posts <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {featuredPosts.map((post) => (
-              <div key={post.slug} className="h-full">
-                <BlogCard post={post} />
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── Latest Posts ── */}
-      <section className="space-y-5 px-4 sm:px-6 max-w-4xl mx-auto">
-        <div className="flex items-center justify-between border-b border-mist/10 pb-3">
-          <h2 className="font-serif font-black text-lg sm:text-xl tracking-tight text-ink dark:text-parchment">
-            Latest Entries
-          </h2>
-          <span className="font-mono text-xs text-mist">{allPosts.length} post{allPosts.length !== 1 ? 's' : ''}</span>
-        </div>
-
-        {latestPosts.length === 0 ? (
-          <div className="text-center py-14 sm:py-20 bg-cream dark:bg-espresso border border-dashed border-mist/20 rounded-2xl">
-            <p className="text-mist font-mono text-sm">No blog posts yet. Stay tuned!</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {latestPosts.map((post) => (
-              <div key={post.slug} className="h-full">
-                <BlogCard post={post} />
-              </div>
-            ))}
-          </div>
-        )}
       </section>
 
     </div>

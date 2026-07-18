@@ -14,73 +14,68 @@ export const Nav: React.FC = () => {
 
   return (
     <>
-      {/* Taller navbar to fit the tall cup image comfortably */}
       <header className="sticky top-0 w-full z-40 bg-cream/95 dark:bg-brand-bg/95 backdrop-blur-md border-b border-mist/10 dark:border-brand-line transition-colors duration-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3"
           style={{ height: '64px' }}>
 
-          {/* ── Logo: cup image + text ── */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 sm:gap-2.5 shrink-0 focus:outline-none group h-full py-1"
-            aria-label="Code & Chai with Sudarshan — Home"
-          >
-            {/* Cup image — full height of nav bar, object-contain keeps aspect ratio */}
-            <img
-              src="/code-chai-with-sudarshan/images/cup-icon.png"
-              alt="Code & Chai — chai cup logo"
-              style={{
-                height: '54px',
-                width: 'auto',
-                objectFit: 'contain',
-                display: 'block',
-                flexShrink: 0,
-              }}
-              className="transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
-            />
-
-            {/* Text beside cup */}
-            <div className="flex flex-col justify-center leading-none select-none">
-              {/* < CODE & CHAI /> */}
-              <span
+          {/* ── Left: Logo ── */}
+          <div className="flex-1 flex items-center justify-start shrink-0">
+            <Link
+              to="/"
+              className="flex items-center gap-2 sm:gap-2.5 focus:outline-none group h-full py-1"
+              aria-label="Code & Chai with Sudarshan — Home"
+            >
+              <img
+                src="/code-chai-with-sudarshan/images/cup-icon.png"
+                alt="Code & Chai — chai cup logo"
                 style={{
-                  fontFamily: 'Poppins, Arial Black, sans-serif',
-                  fontWeight: 800,
-                  fontSize: 'clamp(12px, 2.2vw, 17px)',
-                  lineHeight: 1.15,
-                  color: 'inherit',
+                  height: '54px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                  flexShrink: 0,
                 }}
-              >
-                <span style={{ color: '#5cb82a', fontWeight: 900 }}>&lt;</span>
-                {' '}CODE{' '}
-                <span style={{ color: '#5cb82a', fontWeight: 900 }}>&amp;</span>
-                {' '}CHAI{' '}
-                <span style={{ color: '#5cb82a', fontWeight: 900 }}>/&gt;</span>
-              </span>
+                className="transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
+              />
 
-              {/* with sudarshan */}
-              <span
-                style={{
-                  fontFamily: 'monospace',
-                  fontSize: 'clamp(7px, 1vw, 9.5px)',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: '#8B95A1',
-                  marginTop: '3px',
-                }}
-              >
-                with sudarshan
-              </span>
-            </div>
-          </Link>
+              <div className="flex flex-col justify-center leading-none select-none">
+                <span
+                  style={{
+                    fontFamily: 'Poppins, Arial Black, sans-serif',
+                    fontWeight: 800,
+                    fontSize: 'clamp(12px, 2.2vw, 17px)',
+                    lineHeight: 1.15,
+                    color: 'inherit',
+                  }}
+                >
+                  <span style={{ color: '#5cb82a', fontWeight: 900 }}>&lt;</span>
+                  {' '}CODE{' '}
+                  <span style={{ color: '#5cb82a', fontWeight: 900 }}>&amp;</span>
+                  {' '}CHAI{' '}
+                  <span style={{ color: '#5cb82a', fontWeight: 900 }}>/&gt;</span>
+                </span>
 
-          {/* ── Right controls ── */}
-          <div className="flex items-center gap-2">
+                <span
+                  style={{
+                    fontFamily: 'monospace',
+                    fontSize: 'clamp(7px, 1vw, 9.5px)',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    color: '#8B95A1',
+                    marginTop: '3px',
+                  }}
+                >
+                  with sudarshan
+                </span>
+              </div>
+            </Link>
+          </div>
 
-            {/* Blog tab — desktop */}
+          {/* ── Middle: Blog tab (Centered on desktop, hidden on mobile) ── */}
+          <div className="hidden sm:flex items-center justify-center flex-1">
             <Link
               to="/blog"
-              className={`hidden sm:flex font-mono text-sm font-semibold px-4 py-2 rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-brew-500 ${
+              className={`font-mono text-sm font-semibold px-5 py-2 rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-brew-500 ${
                 isBlogActive
                   ? 'bg-brand-green border-brand-green-dim text-black shadow-md font-bold'
                   : 'border-mist/20 hover:border-brand-green/50 hover:bg-mist/5 text-ink dark:text-brand-ink'
@@ -88,7 +83,10 @@ export const Nav: React.FC = () => {
             >
               Blog
             </Link>
+          </div>
 
+          {/* ── Right: controls (Search, Theme, Hamburger) ── */}
+          <div className="flex-1 flex items-center justify-end gap-2">
             {/* Search */}
             <button
               onClick={() => setIsSearchOpen(true)}
@@ -110,6 +108,7 @@ export const Nav: React.FC = () => {
               {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
+
         </div>
 
         {/* Mobile dropdown */}
