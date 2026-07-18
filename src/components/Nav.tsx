@@ -14,48 +14,59 @@ export const Nav: React.FC = () => {
 
   return (
     <>
+      {/* Taller navbar to fit the tall cup image comfortably */}
       <header className="sticky top-0 w-full z-40 bg-cream/95 dark:bg-espresso/95 backdrop-blur-md border-b border-mist/10 transition-colors duration-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3"
+          style={{ height: '64px' }}>
 
-          {/* ── Logo: cup icon + text ── */}
+          {/* ── Logo: cup image + text ── */}
           <Link
             to="/"
-            className="flex items-center gap-2 sm:gap-3 shrink-0 focus:outline-none group"
+            className="flex items-center gap-2 sm:gap-2.5 shrink-0 focus:outline-none group h-full py-1"
             aria-label="Code & Chai with Sudarshan — Home"
           >
-            {/* Cup image */}
+            {/* Cup image — full height of nav bar, object-contain keeps aspect ratio */}
             <img
               src="/code-chai-with-sudarshan/images/cup-icon.png"
-              alt="Chai cup"
-              className="h-9 sm:h-11 w-auto object-contain shrink-0 transition-transform duration-200 group-hover:scale-105"
+              alt="Code & Chai — chai cup logo"
+              style={{
+                height: '54px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+                flexShrink: 0,
+              }}
+              className="transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
             />
 
-            {/* Text block */}
-            <div className="flex flex-col leading-none select-none">
+            {/* Text beside cup */}
+            <div className="flex flex-col justify-center leading-none select-none">
               {/* < CODE & CHAI /> */}
               <span
-                className="font-black tracking-tight"
                 style={{
                   fontFamily: 'Poppins, Arial Black, sans-serif',
-                  fontSize: 'clamp(13px, 2.5vw, 18px)',
-                  color: 'currentColor',
-                  lineHeight: 1.1,
+                  fontWeight: 800,
+                  fontSize: 'clamp(12px, 2.2vw, 17px)',
+                  lineHeight: 1.15,
+                  color: 'inherit',
                 }}
               >
-                <span style={{ color: '#5ab82e' }}>&lt;</span>
+                <span style={{ color: '#5cb82a', fontWeight: 900 }}>&lt;</span>
                 {' '}CODE{' '}
-                <span style={{ color: '#5ab82e' }}>&amp;</span>
+                <span style={{ color: '#5cb82a', fontWeight: 900 }}>&amp;</span>
                 {' '}CHAI{' '}
-                <span style={{ color: '#5ab82e' }}>/&gt;</span>
+                <span style={{ color: '#5cb82a', fontWeight: 900 }}>/&gt;</span>
               </span>
 
               {/* with sudarshan */}
               <span
-                className="font-mono tracking-widest uppercase text-mist dark:text-mist"
                 style={{
-                  fontSize: 'clamp(7px, 1.2vw, 10px)',
-                  letterSpacing: '0.18em',
-                  marginTop: '2px',
+                  fontFamily: 'monospace',
+                  fontSize: 'clamp(7px, 1vw, 9.5px)',
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: '#8B95A1',
+                  marginTop: '3px',
                 }}
               >
                 with sudarshan
