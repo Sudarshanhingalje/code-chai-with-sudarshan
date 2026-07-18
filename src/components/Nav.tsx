@@ -15,15 +15,13 @@ export const Nav: React.FC = () => {
       <header className="sticky top-0 w-full z-40 bg-cream/80 dark:bg-espresso/80 backdrop-blur-md border-b border-mist/10 transition-colors duration-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
-          {/* Logo Mark & Blog Name */}
-          <Link to="/" className="flex items-center gap-2 group focus:outline-none">
-            <ChaiMark size={36} className="transition-transform group-hover:scale-105 duration-200" />
-            <div className="flex flex-col leading-none">
-              <span className="font-serif font-bold text-lg tracking-tight text-ink dark:text-parchment group-hover:text-brew-600 dark:group-hover:text-brew-400 transition-colors duration-200">
-                Code &amp; Chai
-              </span>
-              <span className="font-mono text-[10px] text-mist/70 tracking-wide">with Sudarshan</span>
-            </div>
+          {/* Official Logo Image */}
+          <Link to="/" className="flex items-center focus:outline-none">
+            <img
+              src="/code-chai-with-sudarshan/images/logo.png"
+              alt="Code & Chai with Sudarshan"
+              className="h-10 sm:h-11 w-auto object-contain bg-cream/90 dark:bg-parchment/95 px-2.5 py-1 rounded-xl shadow-sm border border-mist/10 transition-transform hover:scale-[1.02]"
+            />
           </Link>
 
           {/* Right Side: Blog tab + Search + Theme */}

@@ -14,17 +14,14 @@ export const Home: React.FC = () => {
     <div className="space-y-12 py-6">
 
       {/* Compact Hero — minimal, chai-warm */}
-      <section className="text-center py-10 px-4 max-w-2xl mx-auto space-y-4">
-        <div className="inline-block">
-          <div className="relative">
-            <div className="absolute inset-0 bg-chai-500/10 dark:bg-chai-400/15 rounded-full blur-2xl w-20 h-20 -translate-x-2 -translate-y-2" />
-            <ChaiMark size={72} className="relative z-10" />
-          </div>
+      <section className="text-center py-10 px-4 max-w-2xl mx-auto space-y-6">
+        <div className="flex justify-center select-none">
+          <img
+            src="/code-chai-with-sudarshan/images/logo.png"
+            alt="Code & Chai with Sudarshan"
+            className="h-24 sm:h-28 w-auto object-contain bg-cream/95 dark:bg-parchment/95 px-4 py-2.5 rounded-2xl shadow border border-mist/10"
+          />
         </div>
-
-        <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-ink dark:text-parchment leading-tight tracking-tight">
-          Code &amp; Chai <span className="text-chai-500 dark:text-chai-400">with Sudarshan</span>
-        </h1>
 
         <p className="text-sm sm:text-base text-ink/70 dark:text-parchment/70 font-sans max-w-lg mx-auto leading-relaxed">
           Daily brew of <span className="font-semibold text-brew-600 dark:text-brew-400">Java · Spring Boot · React</span> notes
@@ -40,7 +37,7 @@ export const Home: React.FC = () => {
             Read All Posts
           </Link>
           <a
-            href="https://github.com/Sudarshanhingaljethese"
+            href="https://github.com/Sudarshanhingalje"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-cream hover:bg-mist/5 border border-mist/20 text-ink dark:text-parchment font-mono text-sm font-semibold px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all focus:outline-none focus:ring-2 focus:ring-brew-500"
