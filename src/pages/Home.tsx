@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Coffee, ArrowRight } from 'lucide-react';
-import { ChaiMark } from '../components/ChaiMark';
 import { BlogCard } from '../components/BlogCard';
 import { getAllPosts } from '../utils/posts';
 

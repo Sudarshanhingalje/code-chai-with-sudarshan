@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, Menu, X } from 'lucide-react';
-import { ChaiMark } from './ChaiMark';
 import { ThemeToggle } from './ThemeToggle';
 import { SearchDialog } from './SearchDialog';
 
