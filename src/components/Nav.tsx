@@ -14,24 +14,57 @@ export const Nav: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 w-full z-40 bg-cream/90 dark:bg-espresso/90 backdrop-blur-md border-b border-mist/10 transition-colors duration-200">
+      <header className="sticky top-0 w-full z-40 bg-cream/95 dark:bg-espresso/95 backdrop-blur-md border-b border-mist/10 transition-colors duration-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
 
-          {/* Logo */}
+          {/* ── Logo: cup icon + text ── */}
           <Link
             to="/"
-            className="flex items-center shrink-0 focus:outline-none focus:ring-2 focus:ring-brew-500 rounded-lg"
-            aria-label="Home"
+            className="flex items-center gap-2 sm:gap-3 shrink-0 focus:outline-none group"
+            aria-label="Code & Chai with Sudarshan — Home"
           >
+            {/* Cup image */}
             <img
-              src="/code-chai-with-sudarshan/images/logo-light.png"
-              alt="Code & Chai with Sudarshan"
-              className="h-8 sm:h-10 w-auto object-contain"
+              src="/code-chai-with-sudarshan/images/cup-icon.png"
+              alt="Chai cup"
+              className="h-9 sm:h-11 w-auto object-contain shrink-0 transition-transform duration-200 group-hover:scale-105"
             />
+
+            {/* Text block */}
+            <div className="flex flex-col leading-none select-none">
+              {/* < CODE & CHAI /> */}
+              <span
+                className="font-black tracking-tight"
+                style={{
+                  fontFamily: 'Poppins, Arial Black, sans-serif',
+                  fontSize: 'clamp(13px, 2.5vw, 18px)',
+                  color: 'currentColor',
+                  lineHeight: 1.1,
+                }}
+              >
+                <span style={{ color: '#5ab82e' }}>&lt;</span>
+                {' '}CODE{' '}
+                <span style={{ color: '#5ab82e' }}>&amp;</span>
+                {' '}CHAI{' '}
+                <span style={{ color: '#5ab82e' }}>/&gt;</span>
+              </span>
+
+              {/* with sudarshan */}
+              <span
+                className="font-mono tracking-widest uppercase text-mist dark:text-mist"
+                style={{
+                  fontSize: 'clamp(7px, 1.2vw, 10px)',
+                  letterSpacing: '0.18em',
+                  marginTop: '2px',
+                }}
+              >
+                with sudarshan
+              </span>
+            </div>
           </Link>
 
-          {/* Desktop right-side controls */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* ── Right controls ── */}
+          <div className="flex items-center gap-2">
 
             {/* Blog tab — desktop */}
             <Link
@@ -54,7 +87,7 @@ export const Nav: React.FC = () => {
               <Search className="w-4 h-4 text-mist" />
             </button>
 
-            {/* Theme Toggle */}
+            {/* Theme toggle */}
             <ThemeToggle />
 
             {/* Hamburger — mobile only */}
