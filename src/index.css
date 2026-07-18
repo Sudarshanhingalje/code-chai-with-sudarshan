@@ -100,3 +100,26 @@
     opacity: 0.6;
   }
 }
+
+/* Faint chai steam texture in the background */
+.steam-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  background:
+    radial-gradient(ellipse 500px 300px at 82% -5%, rgba(142, 203, 46, 0.08), transparent 60%),
+    radial-gradient(ellipse 400px 260px at 15% 8%, rgba(217, 143, 46, 0.06), transparent 60%);
+}
+
+.dark .steam-bg {
+  opacity: 0.45;
+  background:
+    radial-gradient(ellipse 500px 300px at 82% -5%, rgba(142, 203, 46, 0.05), transparent 60%),
+    radial-gradient(ellipse 400px 260px at 15% 8%, rgba(217, 143, 46, 0.03), transparent 60%);
+}
+

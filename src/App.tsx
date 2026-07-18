@@ -14,8 +14,8 @@ import { Write } from './pages/Write';
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <div className="flex flex-col min-h-screen bg-cream dark:bg-espresso text-ink dark:text-parchment transition-colors duration-200 overflow-x-hidden">
-
+      <div className="flex flex-col min-h-screen bg-cream dark:bg-brand-bg text-ink dark:text-brand-ink transition-colors duration-200 overflow-x-hidden relative">
+        <div className="steam-bg" />
         <Nav />
 
         <main className="flex-grow w-full py-2 pb-12 sm:pb-16">

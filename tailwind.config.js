@@ -36,10 +36,21 @@ export default {
           700: '#21416B',
           800: '#182F4D',
           900: '#101F33',
+        },
+        brand: {
+          bg: '#0a0c08',
+          raised: '#101309',
+          ink: '#ece9e0',
+          dim: '#8b9083',
+          faint: '#565b4f',
+          green: '#8ecb2e',
+          'green-dim': '#5a7d2a',
+          tea: '#d98f2e',
+          line: '#1e2317',
         }
       },
       fontFamily: {
-        serif: ['Fraunces', 'serif'],
+        serif: ['Newsreader', 'Fraunces', 'serif'],
         sans: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
