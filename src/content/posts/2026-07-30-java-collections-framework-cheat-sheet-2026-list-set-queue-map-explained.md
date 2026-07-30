@@ -12,7 +12,7 @@ draft: false
 
 # Java Collections Framework Cheat Sheet 🚀
 
-![Java Collections Framework](/images/collection.png)
+![Java Collections Framework](https://raw.githubusercontent.com/Sudarshanhingalje/code-chai-with-sudarshan/main/public/images/collection.png)
 
 > One image. Everything you need to revise Java Collections before interviews.
 
